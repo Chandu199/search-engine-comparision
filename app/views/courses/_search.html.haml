@@ -1,0 +1,29 @@
+=form_tag courses_path, method: :get do
+	%p
+		=text_field :q,"",placeholder: "Search Term" 
+		=button_tag "Search"
+	%fieldset
+		%legend Advanced Search
+
+		%p 
+			=text_field_tag "search[title]","",class: "form-control", placeholder: "Title"
+		%p
+			=text_field_tag "search[category]","",class: "form-control", placeholder: "Category"
+
+		%p.input-group.col-md-4
+			=text_field_tag "search[duration_start]","",class: "form-control",placeholder: "Duration Start"
+			%span.input-group-addon
+				&rarr;
+			=text_field "search[duration_end]","",class: "form-control", placeholder: "Duration End"
+
+		%p.input-group.input-daterange.date.col-md-4
+			=text_field_tag "search[published_at_start]","",class: "form-control",placeholder: "Satrt published At"
+			%span.input-group-addon
+				&rarr;
+			=text_field_tag "search[published_at_end]","",class: "form-control",placeholder: "End published at"
+
+		%p 
+			Published last:
+			=select_tag "search[published_at_last]", options_for_published_at
+
+		=button_tag "Search"
